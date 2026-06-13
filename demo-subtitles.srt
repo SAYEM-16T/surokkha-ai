@@ -1,0 +1,51 @@
+1
+00:00:00,000 --> 00:00:12,000
+This is Surokkha AI — an AI safety app for women in Bangladesh.
+
+2
+00:00:12,000 --> 00:00:28,000
+Paste any suspicious message — it tells you if it's a scam, and why.
+
+3
+00:00:28,000 --> 00:00:34,000
+First example — a bKash fraud message, written in Banglish.
+
+4
+00:00:34,000 --> 00:00:48,000
+A red alert — 99% risk. It explains: asks for OTP, threatens to block the account.
+
+5
+00:00:48,000 --> 00:00:56,000
+Now a romance / marriage scam — fully in Bangla.
+
+6
+00:00:56,000 --> 00:01:12,000
+Another alert. It catches the fast marriage proposal, the "abroad" promise, and the money request — exactly how real scams work.
+
+7
+00:01:12,000 --> 00:01:20,000
+But it doesn't cry wolf. Let's try an ordinary message.
+
+8
+00:01:20,000 --> 00:01:32,000
+Green — safe. No false alarm. That trust is what keeps people using it.
+
+9
+00:01:32,000 --> 00:01:42,000
+Your own text works too — here, a grooming attempt in Banglish.
+
+10
+00:01:42,000 --> 00:01:54,000
+Caught it — pressure to keep secrets and move to a private app.
+
+11
+00:01:54,000 --> 00:02:14,000
+It works in 3 layers — fast rules, an AI model that reads Bangla, Banglish and English, and a layer that explains the reason.
+
+12
+00:02:14,000 --> 00:02:30,000
+Your messages are never stored. Next, the model runs fully on-device — completely private.
+
+13
+00:02:30,000 --> 00:02:45,000
+Truecaller catches spam calls — Surokkha AI catches dangerous conversations. Thank you.

@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Surokkha AI — Investor Pitch Deck</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ink: #14182b;
+    --muted: #5a6485;
+    --brand: #3a5bd9;
+    --brand2: #7c5cff;
+    --safe: #1a9d63;
+    --warn: #c98a00;
+    --alert: #d83a3a;
+    --line: #e4e8f5;
+    --bg: #f5f7fc;
+    --card: #ffffff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Inter", "Hind Siliguri", system-ui, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.5;
+  }
+  .bn { font-family: "Hind Siliguri", "Inter", sans-serif; }
+
+  .deck { max-width: 900px; margin: 0 auto; padding: 24px 16px 60px; }
+  .toolbar {
+    background: var(--ink); color: #fff; border-radius: 12px;
+    padding: 14px 18px; margin-bottom: 24px; font-size: 14px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .toolbar b { color: #9fb4ff; }
+  .toolbar .btn {
+    margin-left: auto; background: var(--brand); color: #fff;
+    border: none; padding: 9px 16px; border-radius: 8px; font-size: 14px;
+    cursor: pointer; font-weight: 600;
+  }
+
+  .page { margin-bottom: 30px; }
+
+  /* The 16:9 slide */
+  .slide {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    aspect-ratio: 16 / 9;
+    padding: 40px 46px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 6px 24px rgba(20, 24, 43, 0.06);
+    display: flex; flex-direction: column;
+  }
+  .slide::before {
+    content: ""; position: absolute; top: 0; left: 0; right: 0; height: 6px;
+    background: linear-gradient(90deg, var(--brand), var(--brand2));
+  }
+  .eyebrow {
+    font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--brand); font-weight: 700; margin-bottom: 10px;
+  }
+  .slide h1 { font-size: 40px; font-weight: 800; line-height: 1.08; }
+  .slide h2 { font-size: 30px; font-weight: 800; line-height: 1.12; margin-bottom: 14px; }
+  .slide h3 { font-size: 19px; font-weight: 700; margin: 10px 0 4px; }
+  .slide p { font-size: 16px; color: var(--ink); }
+  .slide .lead { font-size: 18px; color: var(--muted); }
+  .slide ul { margin: 8px 0 0 20px; }
+  .slide li { font-size: 15.5px; margin-bottom: 7px; }
+  .pagenum {
+    position: absolute; bottom: 16px; right: 22px; font-size: 12px; color: #b6bed8;
+  }
+  .brandmark { position: absolute; bottom: 14px; left: 22px; font-size: 12px; color: #b6bed8; font-weight: 600; }
+
+  table { border-collapse: collapse; width: 100%; margin-top: 10px; }
+  th, td { border: 1px solid var(--line); padding: 8px 10px; font-size: 14px; text-align: left; vertical-align: top; }
+  th { background: #f0f3fc; font-weight: 700; }
+
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .box { border: 1px solid var(--line); border-radius: 10px; padding: 14px; background: #fafbff; }
+  .box .big { font-size: 26px; font-weight: 800; color: var(--brand); }
+  .pill { display:inline-block; background:#eef2ff; color:var(--brand); border-radius:999px; padding:3px 10px; font-size:12px; font-weight:600; }
+
+  .center { align-items: center; justify-content: center; text-align: center; }
+  .cover-logo { font-size: 64px; }
+  .cover h1 { font-size: 52px; background: linear-gradient(90deg,var(--brand),var(--brand2)); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+
+  .flow { display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-top:8px; }
+  .flow .step { background:#fafbff; border:1px solid var(--line); border-radius:10px; padding:10px 12px; font-size:13.5px; }
+  .flow .arrow { color: var(--brand); font-weight:700; }
+
+  .tick { color: var(--safe); font-weight:700; }
+  .cross { color: var(--alert); font-weight:700; }
+  .warnmark { color: var(--warn); font-weight:700; }
+
+  /* Speaker notes */
+  .notes {
+    margin-top: 14px; background: #fff; border: 1px solid var(--line);
+    border-left: 4px solid var(--brand); border-radius: 10px; padding: 16px 18px;
+  }
+  .notes .nh { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--brand); font-weight: 700; margin-bottom: 7px; }
+  .notes p { font-size: 14px; color: #38415f; margin-bottom: 8px; }
+  .notes p:last-child { margin-bottom: 0; }
+
+  @media print {
+    body { background: #fff; }
+    .toolbar { display: none; }
+    .deck { max-width: none; padding: 0; }
+    .page { page-break-after: always; margin: 0; padding: 0; }
+    .page:last-child { page-break-after: auto; }
+    .slide { border-radius: 0; box-shadow: none; border: none; aspect-ratio: auto; height: 53vh; }
+    .notes { break-inside: avoid; }
+    @page { size: A4 portrait; margin: 12mm; }
+  }
+</style>
+</head>
+<body>
+<div class="deck">
+
+  <div class="toolbar">
+    <div>📑 <b>Surokkha AI</b> — Investor Pitch Deck &nbsp;·&nbsp; To export PDF: press <b>Ctrl/Cmd + P</b> → Destination <b>Save as PDF</b> → Save.</div>
+    <button class="btn" onclick="window.print()">🖨️ Save as PDF</button>
+  </div>
+
+  <!-- SLIDE 1 — COVER -->
+  <div class="page">
+    <div class="slide center cover">
+      <div class="cover-logo">🛡️</div>
+      <h1>Surokkha AI</h1>
+      <p class="lead bn" style="margin-top:8px">আপনার নিজের সুরক্ষা, আপনার হাতে</p>
+      <p style="margin-top:6px; font-size:18px;">Your personal AI shield against scams &amp; manipulation — in Bangla.</p>
+      <p style="margin-top:22px; color:var(--muted); font-size:15px;">[Your Name] · Founder &nbsp;|&nbsp; AIVA Inaugural Cohort</p>
+      <span class="brandmark">Surokkha AI</span>
+      <span class="pagenum">1 / 12</span>
+    </div>
+    <div class="notes">
+      <div class="nh">Speaker Notes</div>
+      <p>Hello, I'm [Name]. "Surokkha" means <em>protection</em> in Bangla. Surokkha AI is a personal-safety app that reads a person's incoming chat and SMS messages and warns them — in real time, in their own language — when someone is trying to scam or manipulate them.</p>
+      <p>The simplest way to understand us: Truecaller tells you if a <em>caller</em> is spam. We tell you if a <em>conversation</em> is dangerous — a romance scam, a bKash fraud, or grooming. And we do it for Bangla and Banglish, which no global tool does.</p>
+      <p>In the next three minutes I'll show you a real, working product, the size of the problem, and why this is a business — not just a good cause.</p>
+    </div>
+  </div>
+
+  <!-- SLIDE 2 — PROBLEM -->
+  <div class="page">
+    <div class="slide">
+      <div class="eyebrow">The Problem</div>
+      <h2 class="bn">প্রতি বছর হাজারো নারী চ্যাটেই প্রতারিত হচ্ছেন</h2>
+      <p class="lead">Thousands of women are defrauded every year — on WhatsApp, Messenger &amp; SMS.</p>
+      <table>
+        <tr><th>Attack</th><th>Harm</th></tr>
+        <tr><td class="bn">"বিয়ে করব, বিদেশ নেব" — তারপর টাকা নিয়ে গায়েব</td><td>Financial + emotional</td></tr>
+        <tr><td class="bn">"bKash-এ ভুলে পাঠিয়েছি, OTP দিন"</td><td>Avg ৳5,000–15,000 per victim</td></tr>
+        <tr><td class="bn">মাসের পর মাস trust তৈরি করে ব্ল্যাকমেইল</td><td>Sexual + financial coercion</td></tr>
+      </table>
+      <h3>And it's getting worse</h3>
+      <p>AI now writes flawless Bangla scam messages, fake photos and fake voice — victims can no longer "just tell."</p>
+      <span class="brandmark">Surokkha AI</span><span class="pagenum">2 / 12</span>
+    </div>
+    <div class="notes">
+      <div class="nh">Speaker Notes</div>
+      <p>Three kinds of harm, one common thread — they all arrive as a <em>message</em>. A marriage promise that ends in a money transfer. A fake bKash agent asking for an OTP. Or months of trust-building that turns into blackmail.</p>
+      <p>This is documented. Bangladesh's CID has prosecuted fake matrimonial pages that defrauded victims of over 1.5 crore taka. The US FTC reports romance-scam losses of 1.3 billion dollars a year, and the majority of victims are women.</p>
+      <p>And the ground is shifting under us. Until recently you could sometimes spot a scam by its broken language. Generative AI has erased that signal — perfect Bangla, cloned voices, fake faces. Human intuition alone no longer protects anyone. That's the gap we close.</p>
+    </div>
+  </div>
+
+  <!-- SLIDE 3 — INSIGHT -->
+  <div class="page">
+    <div class="slide">
+      <div class="eyebrow">The Insight</div>
+      <h2>Why does no solution exist yet?</h2>
+      <ul>
+        <li><b>Language.</b> Norton, McAfee, Bark are all English-first. They don't understand Bangla or Banglish.</li>
+        <li><b>Not always-on.</b> Tools like Norton Genie need you to copy-paste manually. No real-time protection.</li>
+        <li><b>Wrong model.</b> Bark &amp; Canopy are for <em>children</em>, monitored by a parent. There is no tool for an <em>adult woman protecting herself</em>.</li>
+      </ul>
+      <div class="box" style="margin-top:16px">
+        <b>The gap:</b> Bangla-speaking adult women, protecting <em>themselves</em>, in real time, privately. <span class="bn">কেউ এটা করছে না।</span>
+      </div>
+      <span class="brandmark">Surokkha AI</span><span class="pagenum">3 / 12</span>
+    </div>
+    <div class="notes">
+      <div class="nh">Speaker Notes</div>
+      <p>If the problem is this big, why hasn't anyone solved it? Three reasons.</p>
+      <p>First, language. Every credible safety tool is English-first. Bangladesh's scams happen in Bangla and Banglish — romanized Bangla typed in English letters — and global models simply don't read it well.</p>
+      <p>Second, they're not always-on. Even Google's and Norton's newer scam tools mostly need you to paste a message in after you're already suspicious. Scams work precisely on people who aren't suspicious yet.</p>
+      <p>Third, and most important — the wrong mental model. The few "chat monitoring" products that exist are parental-control apps for children. An adult woman doesn't want a guardian watching her. She wants to protect <em>herself</em>. That reframing — self-protection, not surveillance — is our entire design philosophy, and it's why we're also privacy- and policy-safe.</p>
+    </div>
+  </div>
+
+  <!-- SLIDE 4 — SOLUTION -->
+  <div class="page">
+    <div class="slide">
+      <div class="eyebrow">The Solution</div>
+      <h2>Surokkha AI</h2>
+      <p class="lead">On your phone, in your language, fully private — an AI shield.</p>
+      <div class="flow">
+        <span class="step bn">আপনার WhatsApp / Messenger / SMS</span>
+        <span class="arrow">→</span>
+        <span class="step">Surokkha AI</span>
+        <span class="arrow">→</span>
+        <span class="step bn">⚠️ "এই message-টা সন্দেহজনক — কারণ: OTP চেয়েছে"</span>
+        <span class="arrow">→</span>
+        <span class="step bn">আপনি সিদ্ধান্ত নেন</span>
+      </div>
+      <div class="grid2" style="margin-top:18px">
+        <div class="box bn">🔒 আপনার chat কখনো server-এ স্থায়ীভাবে যায় না</div>
+        <div class="box bn">🗣️ বাংলা + Banglish + English — তিনটাই বোঝে</div>
+        <div class="box bn">✋ শুধু warn করে — block বা share করে না</div>
+        <div class="box bn">👁️ App সবসময় visible — কিছু লুকানো নেই</div>
+      </div>
+      <span class="brandmark">Surokkha AI</span><span class="pagenum">4 / 12</span>
+    </div>
+    <div class="notes">
+      <div class="nh">Speaker Notes</div>
+      <p>Here's what we built. A message arrives. Surokkha AI reads it, decides if it's dangerous, and if so, shows a plain-language warning <em>with the reason</em> — "this asks for your OTP," "a stranger is promising marriage abroad." Then it steps back. The user decides.</p>
+      <p>Four principles make this trustworthy. It's self-protection, so the user installs it on her own phone. It warns, it never blocks or forwards. It's always visible — no hidden monitoring. And it speaks her language — Bangla, Banglish, and English in one engine.</p>
+      <p>This is not a mockup. The live link in our submission is a working product you can test right now with your own messages.</p>
+    </div>
+  </div>
+
+  <!-- SLIDE 5 — HOW IT WORKS -->
+  <div class="page">
+    <div class="slide">
+      <div class="eyebrow">How It Works</div>
+      <h2>A 3-layer hybrid engine</h2>
+      <table>
+        <tr><th>Layer</th><th>Job</th><th>Why it matters</th></tr>
+        <tr><td><b>1 · Hard Rules</b></td><td>Regex for OTP/PIN, lottery, fake transactions, "abroad marriage", secrecy pressure</td><td>Instant, offline, 100% reliable on the obvious cases</td></tr>
+        <tr><td><b>2 · AI Model</b></td><td>Gemini today → on-device BanglaBERT in production</td><td>Catches nuance &amp; paraphrased scams in 3 languages</td></tr>
+        <tr><td><b>3 · Explain</b></td><td>Confidence score + top reasons, in Bangla</td><td>Builds trust; user learns to spot scams</td></tr>
+      </table>
+      <p style="margin-top:14px"><span class="pill">Truecaller-style</span> Layer 4 (roadmap): community reports → sender reputation network.</p>
+      <span class="brandmark">Surokkha AI</span><span class="pagenum">5 / 12</span>
+    </div>
+    <div class="notes">
+      <div class="nh">Speaker Notes</div>
+      <p>Under the hood there are three layers. Layer one is a hard-rules engine — fast regular-expression patterns that catch the unmistakable scams: any request for an OTP or PIN, lottery wins, "send a fee to claim your prize." This runs instantly, offline, and never misses the obvious — even if the AI is slow or unavailable.</p>
+      <p>Layer two is the AI classifier. In this demo it's Google Gemini; in production it becomes an on-device BanglaBERT model so nothing leaves the phone. This is what understands subtle, well-written, paraphrased scams across Bangla, Banglish and English.</p>
+      <p>Layer three explains the verdict — a risk score and the top two or three reasons, in Bangla. That transparency is what turns a skeptical user into someone who trusts and keeps the app.</p>
+      <p>And our long-term moat is layer four: a Truecaller-style community reputation network for scam senders.</p>
+    </div>
+  </div>
+
+  <!-- SLIDE 6 — MARKET -->
+  <div class="page">
+    <div class="slide">
+      <div class="eyebrow">Market Size</div>
+      <h2>A large, underserved, reachable market</h2>
+      <div class="grid3">
+        <div class="box"><div class="big">12 cr+</div>Bangladesh mobile internet users</div>
+        <div class="box"><div class="big">14 cr+</div>bKash / Nagad active accounts</div>
+        <div class="box"><div class="big">~2 cr</div>Beachhead: women 18–40, social-media active</div>
+      </div>
+      <h3>Problem scale</h3>
+      <ul>
+        <li>BFIU suspended <b>48,586</b> mobile-financial-service accounts in 2024 for fraud.</li>
+        <li>Romance scams: <b>$1.3B/yr</b> globally, 60%+ of victims are women.</li>
+        <li>Diaspora: <b>5M+</b> South Asians in US/UK/Canada — same scams, same language.</li>
+      </ul>
+      <span class="brandmark">Surokkha AI</span><span class="pagenum">6 / 12</span>
+    </div>
+    <div class="notes">
+      <div class="nh">Speaker Notes</div>
+      <p>The market is large and, crucially, reachable through one app store in one language. Over 12 crore Bangladeshis are online; mobile financial services have over 14 crore accounts — which is exactly the rails these scams run on.</p>
+      <p>Our beachhead isn't "everyone." It's roughly 2 crore women aged 18 to 40 who are active on social media — the group most targeted by romance and grooming scams. That's a focused, winnable first market.</p>
+      <p>On scale of harm: Bangladesh's financial-intelligence unit suspended over 48,000 MFS accounts for fraud in a single year. Romance scams alone are a 1.3-billion-dollar annual problem globally. And there's a natural expansion path — five million-plus South Asians in the diaspora face the identical scams in the identical language.</p>
+    </div>
+  </div>
+
+  <!-- SLIDE 7 — TRACTION -->
+  <div class="page">
+    <div class="slide">
+      <div class="eyebrow">Traction &amp; Validation</div>
+      <h2>What we've proven so far</h2>
+      <ul>
+        <li><span class="tick">✓</span> <b>Working product live</b> — real detection across Bangla, Banglish &amp; English (test it from our link).</li>
+        <li><span class="tick">✓</span> <b>Technical validation</b> — BanglaBERT reaches ~91% F1 on the BD-SHS benchmark; Bangla smishing models hit ~98% accuracy (published research).</li>
+        <li><span class="tick">✓</span> <b>Selected for the AIVA inaugural cohort.</b></li>
+        <li class="bn">⬜ [এখানে তোমার নিজের data: beta user সংখ্যা, survey result, waitlist — যা আছে]</li>
+      </ul>
+      <div class="box" style="margin-top:14px">Next 90 days: closed beta with 20–30 women across Dhaka + districts; measure false-positive rate and "scam caught" stories.</div>
+      <span class="brandmark">Surokkha AI</span><span class="pagenum">7 / 12</span>
+    </div>
+    <div class="notes">
+      <div class="nh">Speaker Notes</div>
+      <p>For an early-stage venture, the strongest traction is a working product — and that's what we have. The link in this submission is live; you can paste a Bangla or Banglish scam message and watch it get caught and explained. That de-risks the core technical question.</p>
+      <p>The approach is also academically validated. Published work shows BanglaBERT hitting around 91% F1 on Bangla social-media benchmarks, and Bangla SMS-phishing classifiers reaching the high nineties. We're standing on proven science, not hope.</p>
+      <p>Being selected for the AIVA inaugural cohort is itself external validation. <strong>[Here, add your own numbers — beta users, survey results, or a waitlist if you have any; even "we interviewed 15 women and 11 had received a scam they weren't sure about" is powerful.]</strong> Over the next 90 days our single focus is a closed beta that measures false-positive rate and collects real "we caught a scam" stories.</p>
+    </div>
+  </div>
+
+  <!-- SLIDE 8 — BUSINESS MODEL -->
+  <div class="page">
+    <div class="slide">
+      <div class="eyebrow">Business Model</div>
+      <h2>Freemium consumer + B2B</h2>
+      <table>
+        <tr><th>Free</th><th>Pro — ৳99/month</th></tr>
+        <tr><td>SMS + WhatsApp scan, basic scam rules, see community reports</td><td>All apps (Messenger, imo, dating), advanced grooming detection, priority alerts, opt-in family alert</td></tr>
+      </table>
+      <h3>B2B (Phase 2)</h3>
+      <ul>
+        <li><b>MFS partners</b> (bKash, Nagad) — protect their users, reduce fraud-driven churn.</li>
+        <li><b>Mobile operators</b> (GP, Robi) — bundle as a value-added safety service.</li>
+        <li><b>NGOs / women's-safety orgs</b> — bulk licenses, grant-funded distribution.</li>
+      </ul>
+      <span class="brandmark">Surokkha AI</span><span class="pagenum">8 / 12</span>
+    </div>
+    <div class="notes">
+      <div class="nh">Speaker Notes</div>
+      <p>The model is freemium on the consumer side. The free tier is genuinely useful — SMS and WhatsApp scanning with the core rules — because safety has to be accessible. Pro, at 99 taka a month, adds coverage of every app, advanced grooming detection, and an opt-in feature to alert a trusted family member.</p>
+      <p>But the bigger long-term revenue is B2B. Mobile financial services like bKash and Nagad lose money and trust to exactly these scams — protecting their users is directly in their interest. Operators can bundle us as a safety add-on. And NGOs and women's-safety organizations represent grant-funded distribution at scale.</p>
+      <p>So we monetize individuals who want more protection, and we monetize the institutions whose users we keep safe.</p>
+    </div>
+  </div>
+
+  <!-- SLIDE 9 — COMPETITION -->
+  <div class="page">
+    <div class="slide">
+      <div class="eyebrow">Competition</div>
+      <h2>Why we win</h2>
+      <table>
+        <tr><th></th><th>Surokkha</th><th>Bark</th><th>Truecaller</th><th>Norton Genie</th><th>Gemini</th></tr>
+        <tr><td>Bangla / Banglish</td><td class="tick">✓</td><td class="cross">✗</td><td class="cross">✗</td><td class="cross">✗</td><td class="cross">✗</td></tr>
+        <tr><td>Adult self-protection</td><td class="tick">✓</td><td class="cross">child</td><td class="warnmark">calls</td><td class="warnmark">manual</td><td class="warnmark">limited</td></tr>
+        <tr><td>Always-on chat</td><td class="tick">✓</td><td class="tick">✓</td><td class="cross">✗</td><td class="cross">✗</td><td class="warnmark">~</td></tr>
+        <tr><td>Private / on-device</td><td class="tick">✓</td><td class="cross">✗</td><td class="cross">✗</td><td class="cross">✗</td><td class="tick">✓</td></tr>
+        <tr><td>bKash / romance patterns</td><td class="tick">✓</td><td class="cross">✗</td><td class="cross">✗</td><td class="warnmark">~</td><td class="cross">✗</td></tr>
+      </table>
+      <p style="margin-top:12px"><b>Moat:</b> Bangla scam dataset + BD-specific patterns + community report network. Big vendors won't build this — the market looks "too small" to them. It isn't to us.</p>
+      <span class="brandmark">Surokkha AI</span><span class="pagenum">9 / 12</span>
+    </div>
+    <div class="notes">
+      <div class="nh">Speaker Notes</div>
+      <p>Here's the landscape. Read down our column — we're the only one that says yes across the board for our user: Bangla and Banglish, adult self-protection, always-on, private, and tuned to local bKash and romance-scam patterns.</p>
+      <p>Bark is for children. Truecaller is calls, not chat content. Norton Genie is manual and English. Google's Gemini scam detection is promising but English-first and limited to the newest flagship phones.</p>
+      <p>So why won't a big player just crush us? Two reasons. Our moat is data and network — a Bangla scam corpus, local patterns, and a community-report reputation system that compounds over time. And the market looks too small to a global vendor to prioritize. That asymmetry — too small for them, exactly right for us — is precisely where defensible companies get built.</p>
+    </div>
+  </div>
+
+  <!-- SLIDE 10 — TEAM -->
+  <div class="page">
+    <div class="slide">
+      <div class="eyebrow">Team</div>
+      <h2>Why us</h2>
+      <div class="grid2">
+        <div class="box"><h3 style="margin-top:0">[Your Name] — Founder</h3><p class="bn">[তোমার background — engineering / product / domain]</p></div>
+        <div class="box"><h3 style="margin-top:0">[Co-founder] — CTO</h3><p>[Android + ML / NLP experience]</p></div>
+      </div>
+      <ul style="margin-top:16px">
+        <li>We understand the Bangladeshi context better than any global vendor.</li>
+        <li>AIVA cohort = AI venture-building support &amp; network.</li>
+        <li class="bn">Mission-driven: এই সমস্যা আমাদের নিজের community-র।</li>
+      </ul>
+      <span class="brandmark">Surokkha AI</span><span class="pagenum">10 / 12</span>
+    </div>
+    <div class="notes">
+      <div class="nh">Speaker Notes</div>
+      <p><strong>[Replace the brackets with your real details — this slide is scored on founder–market fit, so be specific.]</strong></p>
+      <p>The case for us is founder–market fit. We're from this community; we've seen these scams hit people we know. We understand the language, the platforms, and the cultural context — the marriage-and-abroad scam, the bKash-agent impersonation — in a way a Silicon Valley team never could.</p>
+      <p>On capability: name your engineering and machine-learning background here, and your co-founder's Android and NLP experience. Mention any advisor from women's-safety, cybersecurity, or fintech. Close on motivation: we're building this because it's our community's problem, and the AIVA cohort gives us the venture-building support to do it right.</p>
+    </div>
+  </div>
+
+  <!-- SLIDE 11 — ASK -->
+  <div class="page">
+    <div class="slide">
+      <div class="eyebrow">The Ask</div>
+      <h2>What we're raising</h2>
+      <div class="grid3">
+        <div class="box"><div class="big">$[X]</div>Pre-seed — 12-month runway</div>
+        <div class="box">Model training, Android dev, beta user acquisition</div>
+        <div class="box">Mentorship: NLP product, women's-safety NGOs, BD regulatory</div>
+      </div>
+      <h3>12-month milestones</h3>
+      <ul>
+        <li>Ship the Android MVP (bKash + romance scam, on-device model).</li>
+        <li>10,000 active users.</li>
+        <li>First B2B pilot (an MFS or NGO partner).</li>
+        <li>Publicly release a Bangla scam dataset → academic credibility + goodwill.</li>
+      </ul>
+      <span class="brandmark">Surokkha AI</span><span class="pagenum">11 / 12</span>
+    </div>
+    <div class="notes">
+      <div class="nh">Speaker Notes</div>
+      <p><strong>[Set your real number — for a pre-seed in this market, a figure that buys a focused 12-month runway is credible.]</strong></p>
+      <p>We're raising a pre-seed round for a 12-month runway. The money goes to three things: training and shipping the on-device Bangla model, native Android development, and acquiring our first beta cohort.</p>
+      <p>Beyond cash, the right mentorship matters — NLP product expertise, introductions into women's-safety NGO networks, and guidance on Bangladesh's data and privacy regulations.</p>
+      <p>Here's what your investment buys in twelve months: a shipped Android MVP, ten thousand active users, our first B2B pilot, and a publicly released Bangla scam dataset that gives us academic credibility and community goodwill. Concrete, measurable, and exactly what de-risks the next round.</p>
+    </div>
+  </div>
+
+  <!-- SLIDE 12 — VISION -->
+  <div class="page">
+    <div class="slide center">
+      <div class="eyebrow">Vision</div>
+      <h2 style="font-size:34px; max-width:760px">Truecaller protects you from spam calls.<br/>Surokkha AI protects you from dangerous conversations.</h2>
+      <p class="lead" style="margin-top:16px">Start in Bangladesh → South Asian diaspora → anywhere there is a low-resource language, vulnerable people, and digital fraud.</p>
+      <p class="bn" style="margin-top:22px; font-size:20px; font-weight:600;">একটা মেয়েও যদি একটা scam থেকে বেঁচে যায় — সেটাই শুরু।</p>
+      <span class="brandmark">Surokkha AI</span><span class="pagenum">12 / 12</span>
+    </div>
+    <div class="notes">
+      <div class="nh">Speaker Notes</div>
+      <p>Let me leave you with where this goes. Truecaller built a huge company by answering one question — is this caller spam? We answer the harder, more valuable one — is this <em>conversation</em> trying to hurt me?</p>
+      <p>We start in Bangladesh because that's where we have the language, the data, and the urgency. From there the same engine extends to the South Asian diaspora, and then anywhere a low-resource language, vulnerable users, and digital fraud meet — which is most of the world.</p>
+      <p>But the mission is simple enough to say in one Bangla sentence: if even one woman is saved from one scam, that's the start. Thank you — and please, test the live product yourself.</p>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
